@@ -1,7 +1,7 @@
 # Unit tests for WOTS
 import unittest
 from src.wots import WOTS
-from src.config import XMSS_SEED
+from src.config import XMSS_SEED, WOTS_KEY_SIZE
 
 
 class TestWOTS(unittest.TestCase):
@@ -18,6 +18,17 @@ class TestWOTS(unittest.TestCase):
         signature = self.wots.sign(message)
         signature[0] = "tampered"
         self.assertFalse(self.wots.verify(message, signature))
+
+    def test_signature_length(self):
+        message = "length test"
+        signature = self.wots.sign(message)
+        self.assertEqual(len(signature), WOTS_KEY_SIZE)
+
+    def test_wrong_message_verification(self):
+        message = "original"
+        signature = self.wots.sign(message)
+        wrong_message = "modified"
+        self.assertFalse(self.wots.verify(wrong_message, signature))
 
 
 if __name__ == "__main__":

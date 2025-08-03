@@ -24,6 +24,12 @@ class TestMerkle(unittest.TestCase):
         tampered_root = "12345"
         self.assertFalse(MerkleTree.verify_path(self.leaves[index], path, index, tampered_root))
 
+    def test_path_wrong_index(self):
+        index = 0
+        path = self.tree.get_path(index)
+        wrong_index = 1
+        self.assertFalse(MerkleTree.verify_path(self.leaves[index], path, wrong_index, self.tree.get_root()))
+
 
 if __name__ == "__main__":
     unittest.main()
