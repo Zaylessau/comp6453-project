@@ -18,7 +18,26 @@ It is implemented in Python and features **XMSS (eXtended Merkle Signature Schem
 ---
 
 ## Project Structure
-<pre><code>``` project-root/ ├── src/ │ ├── wots.py # WOTS+ signature algorithm │ ├── merkle.py # Merkle tree construction and authentication │ ├── xmss.py # XMSS core signing and verification │ ├── hash_fn.py # Configurable hash functions (SHA3-256, etc.) │ ├── encode.py # Non-comparable encoding (simplified) │ ├── aggregate.py # Dummy SNARK-style signature aggregation │ └── config.py # Global parameter configuration │ ├── tests/ │ ├── test_wots.py # Unit tests for WOTS+ │ ├── test_merkle.py # Unit tests for Merkle tree │ └── test_xmss.py # Unit tests for XMSS │ ├── benchmark/ │ ├── benchmark_signing.py # Benchmark signing speed & size │ └── benchmark_verify.py # Benchmark verification speed │ ├── main.py # Demo entry (sign + verify + aggregate) ├── run_all.py # One-click run: tests + benchmarks + demo ├── requirements.txt # Python dependencies └── README.md # Project documentation ``` </code></pre>
+src/wots.py             # WOTS+ signature algorithm  
+src/merkle.py           # Merkle tree construction and authentication  
+src/xmss.py             # XMSS core signing and verification  
+src/hash_fn.py          # Configurable hash functions (SHA3-256, SHA-256, Poseidon2 placeholder)  
+src/encode.py           # Non-comparable encoding (simplified)  
+src/aggregate.py        # Signature aggregation (dummy SNARK simulation)  
+src/config.py           # Global parameter configuration  
+
+tests/test_wots.py      # Unit tests for WOTS+  
+tests/test_merkle.py    # Unit tests for Merkle tree  
+tests/test_xmss.py      # Unit tests for XMSS  
+
+benchmark/benchmark_signing.py   # Benchmark signing performance  
+benchmark/benchmark_verify.py    # Benchmark verification performance  
+
+main.py                 # Demo entry: signing, verification, aggregation  
+run_all.py              # One-click: tests + benchmarks + demo  
+requirements.txt        # Python dependencies  
+README.md               # Project documentation  
+
 
 ## Environment Setup
 
@@ -28,22 +47,21 @@ It is implemented in Python and features **XMSS (eXtended Merkle Signature Schem
 
 ### Install dependencies:
 
-```bash
 pip install -r requirements.txt
 
-Usage
+### Usage
 Run demo (signing + verification + aggregation):
 python main.py
 
 Run all (unit tests + performance benchmarks + demo):
 python run_all.py
 
-Example Benchmark Output:
-=== Signing Benchmark ===
+### Example Benchmark Output:
+Signing Benchmark:
 Average signing time: 0.001200 sec  
 Average signature size: 4800 bytes  
 
-=== Verification Benchmark ===
+Verification Benchmark:
 Average verification time: 0.001800 sec
 
 Parameter Configuration
@@ -54,6 +72,6 @@ XMSS_LEAVES = 4              # Number of leaves in Merkle tree
 XMSS_SEED = "group-project-demo"  # Seed for key generation
 BENCHMARK_ITER = 10          # Number of iterations for benchmarking
 
-Reference
+### Reference
 Hash-Based Multi-Signatures for Post-Quantum Ethereum, IACR 2025/055
 https://eprint.iacr.org/2025/055
