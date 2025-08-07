@@ -1,3 +1,5 @@
+# Benchmark for XMSS verification performance
+
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -12,6 +14,7 @@ def benchmark_verification():
     xmss = XMSS(seed=XMSS_SEED, num_leaves=XMSS_LEAVES)
     message = IncomparableEncoding.encode_message("benchmark verify test")
 
+    # Pre-generate signatures for benchmarking
     signatures = [xmss.sign(i, message) for i in range(BENCHMARK_ITER)]
     times = []
 
@@ -23,9 +26,9 @@ def benchmark_verification():
 
     avg_time = sum(times) / BENCHMARK_ITER
 
-    print("\n=== 验证性能测试 ===")
-    print(f"测试次数: {BENCHMARK_ITER}")
-    print(f"平均验证时间: {avg_time:.6f} 秒")
+    print("\n=== Verification Benchmark ===")
+    print(f"Iterations: {BENCHMARK_ITER}")
+    print(f"Average verification time: {avg_time:.6f} seconds")
 
 
 if __name__ == "__main__":

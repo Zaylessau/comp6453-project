@@ -1,3 +1,5 @@
+# Benchmark for XMSS signing performance
+
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -26,10 +28,10 @@ def benchmark_signing():
     avg_time = sum(times) / BENCHMARK_ITER
     avg_size = sum(sizes) / BENCHMARK_ITER
 
-    print("\n=== 签名性能测试 ===")
-    print(f"测试次数: {BENCHMARK_ITER}")
-    print(f"平均签名时间: {avg_time:.6f} 秒")
-    print(f"平均签名大小: {avg_size:.2f} 字节")
+    print("\n=== Signing Benchmark ===")
+    print(f"Iterations: {BENCHMARK_ITER}")
+    print(f"Average signing time: {avg_time:.6f} seconds")
+    print(f"Average signature size: {avg_size:.2f} bytes")
 
 
 if __name__ == "__main__":
