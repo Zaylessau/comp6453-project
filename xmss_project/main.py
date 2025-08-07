@@ -1,7 +1,5 @@
-# Entry point for testing XMSS signing and verification
-# =======================================
-# XMSS Demo Entry Point
-# =======================================
+# Entry point for XMSS signing, verification, and aggregation demo
+
 from src.xmss import XMSS
 from src.aggregate import Aggregator
 from src.encode import IncomparableEncoding
@@ -9,30 +7,30 @@ from src.config import XMSS_SEED, XMSS_LEAVES
 
 
 def demo_xmss_workflow():
-    # 初始化 XMSS
+    # Initialize XMSS
     xmss = XMSS(seed=XMSS_SEED, num_leaves=XMSS_LEAVES)
 
-    # 演示消息
+    # Example message 1
     message = "hello blockchain"
     encoded_msg = IncomparableEncoding.encode_message(message)
 
-    # 签名消息
+    # Sign message
     print("\n--- Signing Message ---")
     signature1 = xmss.sign(0, encoded_msg)
     print("Signature index:", signature1["index"])
     print("Merkle Root:", signature1["root"])
 
-    # 验证签名
+    # Verify signature
     print("\n--- Verifying Signature ---")
     valid = xmss.verify(encoded_msg, signature1)
     print("Signature valid:", valid)
 
-    # 再签另一条消息
+    # Sign a second message
     message2 = "ethereum pq"
     encoded_msg2 = IncomparableEncoding.encode_message(message2)
     signature2 = xmss.sign(1, encoded_msg2)
 
-    # 聚合签名
+    # Aggregate both signatures
     print("\n--- Aggregating Signatures ---")
     aggregator = Aggregator()
     aggregator.add_signature(signature1)
@@ -42,7 +40,7 @@ def demo_xmss_workflow():
     print("Aggregated Proof:", aggregated_result["aggregated_proof"])
     print("Total Signatures Aggregated:", aggregated_result["num_signatures"])
 
-    # 验证聚合结果
+    # Verify aggregated result
     print("\n--- Verifying Aggregated Signatures ---")
     agg_valid = aggregator.verify_aggregate(aggregated_result)
     print("Aggregate valid:", agg_valid)

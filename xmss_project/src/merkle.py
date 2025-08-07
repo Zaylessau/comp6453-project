@@ -1,7 +1,5 @@
-# Merkle Tree implementation placeholder
-# =======================================
-# Merkle Tree Implementation
-# =======================================
+# Merkle Tree Implementation (Simplified)
+
 import math
 from src.hash_fn import simple_hash
 
@@ -9,15 +7,14 @@ from src.hash_fn import simple_hash
 class MerkleTree:
     def __init__(self, leaves: list):
         """
-        初始化 Merkle 树
-        leaves: 公钥列表（WOTS 公钥串）
+        Initialize Merkle tree with a list of leaf nodes (WOTS public keys).
         """
         self.leaves = leaves
         self.tree = self._build_tree(leaves)
 
     def _build_tree(self, leaves: list) -> list:
         """
-        构造 Merkle 树
+        Build the full Merkle tree from leaves upward.
         """
         tree = [leaves]
         current_level = leaves
@@ -36,13 +33,13 @@ class MerkleTree:
 
     def get_root(self) -> str:
         """
-        获取 Merkle 树根
+        Return the Merkle root.
         """
         return self.tree[-1][0]
 
     def get_path(self, index: int) -> list:
         """
-        获取 index 节点的认证路径
+        Return the authentication path for a given leaf index.
         """
         path = []
         for level in self.tree[:-1]:
@@ -55,7 +52,7 @@ class MerkleTree:
     @staticmethod
     def verify_path(leaf: str, path: list, index: int, root: str) -> bool:
         """
-        验证 Merkle 路径
+        Verify a Merkle authentication path.
         """
         digest = leaf
         for sibling in path:

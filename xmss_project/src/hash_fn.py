@@ -1,17 +1,12 @@
-# Tweakable hash functions (SHA-3, Poseidon2 placeholder)
-# =======================================
-# Tweakable Hash Function Implementation
-# =======================================
+# Tweakable Hash Functions (SHA-3, Poseidon2 Placeholder)
+
 import hashlib
 from src.config import HASH_ALGO, HASH_SIZE
 
 
 def tweakable_hash(public_param: str, tweak: str, message: str) -> str:
     """
-    Tweakable hash: H(P || T || M)
-    P: 公共参数 (public_param)
-    T: tweak，用于域分离
-    M: 消息
+    Compute tweakable hash: H(P || T || M)
     """
     combined = (public_param + tweak + message).encode()
 
@@ -25,7 +20,7 @@ def tweakable_hash(public_param: str, tweak: str, message: str) -> str:
 
 def simple_hash(data: str) -> str:
     """
-    Simple hash function for Merkle tree/WOTS
+    Compute simple hash for Merkle tree or WOTS usage.
     """
     if HASH_ALGO.lower() == "sha3_256":
         return hashlib.sha3_256(data.encode()).hexdigest()
@@ -37,6 +32,6 @@ def simple_hash(data: str) -> str:
 
 def get_hash_size() -> int:
     """
-    获取哈希输出大小（字节数）
+    Return hash output size in bytes.
     """
     return HASH_SIZE

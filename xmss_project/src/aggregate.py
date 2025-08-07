@@ -1,7 +1,6 @@
-# Signature aggregation logic (SNARK simulation placeholder)
-# =======================================
-# XMSS Multi-Signature Aggregation (Dummy)
-# =======================================
+# Signature Aggregation Logic (SNARK Simulation Placeholder)
+# XMSS Multi-Signature Aggregation 
+
 from src.hash_fn import simple_hash
 from src.config import AGGREGATION_MODE
 
@@ -12,14 +11,14 @@ class Aggregator:
 
     def add_signature(self, xmss_signature: dict):
         """
-        添加 XMSS 签名到聚合池
+        Add a single XMSS signature to the aggregation pool.
         """
         self.signatures.append(xmss_signature)
 
     def aggregate(self) -> dict:
         """
-        聚合签名（Dummy 版本）
-        实际 SNARK 聚合会将多个签名压缩为简短证明，这里我们用 hash 模拟
+        Aggregate all collected signatures (dummy version).
+        Simulates zkSNARK aggregation by hashing all Merkle roots.
         """
         if AGGREGATION_MODE == "dummy":
             combined_data = ''.join(sig["root"] for sig in self.signatures)
@@ -34,7 +33,7 @@ class Aggregator:
 
     def verify_aggregate(self, aggregated_data: dict) -> bool:
         """
-        验证聚合签名（Dummy 版本）
+        Verify the aggregated proof (dummy version).
         """
         if AGGREGATION_MODE == "dummy":
             return aggregated_data["num_signatures"] == len(self.signatures)
