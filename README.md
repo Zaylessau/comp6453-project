@@ -18,25 +18,25 @@ It is implemented in Python and features **XMSS (eXtended Merkle Signature Schem
 ---
 
 ## Project Structure
-src/wots.py             # WOTS+ signature algorithm  
-src/merkle.py           # Merkle tree construction and authentication  
-src/xmss.py             # XMSS core signing and verification  
-src/hash_fn.py          # Configurable hash functions (SHA3-256, SHA-256, Poseidon2 placeholder)  
-src/encode.py           # Non-comparable encoding (simplified)  
-src/aggregate.py        # Signature aggregation (dummy SNARK simulation)  
-src/config.py           # Global parameter configuration  
+src/wots.py             
+src/merkle.py           
+src/xmss.py             
+src/hash_fn.py          
+src/encode.py             
+src/aggregate.py        
+src/config.py           
 
-tests/test_wots.py      # Unit tests for WOTS+  
-tests/test_merkle.py    # Unit tests for Merkle tree  
-tests/test_xmss.py      # Unit tests for XMSS  
+tests/test_wots.py      
+tests/test_merkle.py     
+tests/test_xmss.py      
 
 benchmark/benchmark_signing.py   # Benchmark signing performance  
 benchmark/benchmark_verify.py    # Benchmark verification performance  
 
-main.py                 # Demo entry: signing, verification, aggregation  
-run_all.py              # One-click: tests + benchmarks + demo  
-requirements.txt        # Python dependencies  
-README.md               # Project documentation  
+main.py                  
+run_all.py              
+requirements.txt        
+README.md               
 
 
 ## Environment Setup
@@ -66,11 +66,11 @@ Average verification time: 0.001800 sec
 
 Parameter Configuration
 You can adjust cryptographic parameters in src/config.py:
-HASH_ALGO = "sha3_256"       # Hash algorithm: sha3_256, sha256, etc.
-WOTS_PARAM_W = 16            # Winternitz parameter w
-XMSS_LEAVES = 4              # Number of leaves in Merkle tree
-XMSS_SEED = "group-project-demo"  # Seed for key generation
-BENCHMARK_ITER = 10          # Number of iterations for benchmarking
+HASH_ALGO = "sha3_256"       
+WOTS_PARAM_W = 16            
+XMSS_LEAVES = 4              
+XMSS_SEED = "group-project-demo"  
+BENCHMARK_ITER = 10          
 
 ### Reference
 Hash-Based Multi-Signatures for Post-Quantum Ethereum, IACR 2025/055
