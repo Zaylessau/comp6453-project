@@ -26,6 +26,9 @@ class XMSS:
         # Track used leaf indices (one-time usage)
         self.used_indices = set()
 
+        # ✅ Add public key reference (Merkle root)
+        self.pk = self.root
+
     def sign(self, index: int, message: str):
         """
         Sign a message using the WOTS key at the given index.
@@ -64,3 +67,6 @@ class XMSS:
 
         leaf_value = ''.join(wots_instance.public_key)
         return self.tree.verify_path(leaf_value, auth_path, index, root)
+
+    def get_public_key(self):
+        return self.pk

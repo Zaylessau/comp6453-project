@@ -28,3 +28,13 @@ if __name__ == "__main__":
     run_tests()
     run_benchmarks()
     run_demo()
+
+
+print("\n====================")
+print(" Running Aggregation Test ")
+print("====================")
+
+import unittest
+from tests import test_aggregate
+
+unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromModule(test_aggregate))
