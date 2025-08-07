@@ -12,7 +12,7 @@ WOTS_PARAM_W = 16       # Winternitz 参数 w
 WOTS_KEY_SIZE = 16      # 私钥/公钥长度
 
 # Merkle tree
-XMSS_LEAVES = 256   # 叶节点数量（演示可选 4、8、16）
+XMSS_LEAVES = 1024  # 叶节点数量（演示可选 4、8、16）
 XMSS_SEED = "group-project-demo"  # 种子
 
 # Benchmark parameters
