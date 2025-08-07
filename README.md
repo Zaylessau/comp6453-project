@@ -70,7 +70,7 @@ HASH_ALGO = "sha3_256"
 WOTS_PARAM_W = 16            
 XMSS_LEAVES = 4              
 XMSS_SEED = "group-project-demo"  
-BENCHMARK_ITER = 10          
+BENCHMARK_ITER = 100          
 
 ### Reference
 Hash-Based Multi-Signatures for Post-Quantum Ethereum, IACR 2025/055
