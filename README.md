@@ -18,30 +18,7 @@ It is implemented in Python and features **XMSS (eXtended Merkle Signature Schem
 ---
 
 ## Project Structure
-src/
-├── wots.py # WOTS+ signature algorithm
-├── merkle.py # Merkle tree construction and authentication paths
-├── xmss.py # XMSS core signing and verification
-├── hash_fn.py # Configurable hash functions
-├── encode.py # Non-comparable encoding (simplified)
-├── aggregate.py # Signature aggregation (dummy SNARK simulation)
-├── config.py # Global parameter configuration
-
-tests/
-├── test_wots.py # Unit tests for WOTS+
-├── test_merkle.py # Unit tests for Merkle tree
-├── test_xmss.py # Unit tests for XMSS
-
-benchmark/
-├── benchmark_signing.py # Performance benchmark for signing
-├── benchmark_verify.py # Performance benchmark for verification
-
-main.py # Entry point for signature/verification/aggregation demo
-run_all.py # Run all tests + benchmarks + demo at once
-requirements.txt # Python dependencies
-README.md # Project documentation
-
----
+<pre><code>``` project-root/ ├── src/ │ ├── wots.py # WOTS+ signature algorithm │ ├── merkle.py # Merkle tree construction and authentication │ ├── xmss.py # XMSS core signing and verification │ ├── hash_fn.py # Configurable hash functions (SHA3-256, etc.) │ ├── encode.py # Non-comparable encoding (simplified) │ ├── aggregate.py # Dummy SNARK-style signature aggregation │ └── config.py # Global parameter configuration │ ├── tests/ │ ├── test_wots.py # Unit tests for WOTS+ │ ├── test_merkle.py # Unit tests for Merkle tree │ └── test_xmss.py # Unit tests for XMSS │ ├── benchmark/ │ ├── benchmark_signing.py # Benchmark signing speed & size │ └── benchmark_verify.py # Benchmark verification speed │ ├── main.py # Demo entry (sign + verify + aggregate) ├── run_all.py # One-click run: tests + benchmarks + demo ├── requirements.txt # Python dependencies └── README.md # Project documentation ``` </code></pre>
 
 ## Environment Setup
 
